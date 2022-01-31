@@ -61,6 +61,7 @@ app.post("/api/user/login", async (req, res) => {
     });
     if (user) {
       var token = jwt.sign(
+
         { user_id: user._id.toString() },
         process.env.TOKEN_SECRET
       );
@@ -108,4 +109,6 @@ app.post("/api/update", authenticateToken,async (req, res) => {
 
 // app.use("/api/admin", adminRoute);
 
-app.listen(4000, () => console.log("server running"));
+app.listen(process.env.PORT || 5000,()=>{
+    console.log("express running")
+});

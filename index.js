@@ -84,7 +84,7 @@ app.get("/api/user/",authenticateToken, async (req, res) => {
     res.status(400).send(err);
   }
 });
-app.get("api/admin/user/list", async (req, res) => {
+app.get("/api/admin/user/list", async (req, res) => {
   try {
     let users = await User.find({});
     return res.send({ status: true, message: "users list", data: users });

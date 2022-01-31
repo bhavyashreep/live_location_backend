@@ -65,7 +65,7 @@ app.post("/api/user/login", async (req, res) => {
         { user_id: user._id.toString() },
         process.env.TOKEN_SECRET
       );
-      return res.send({ status: true, message: req.body.mobile, token: token });
+      return res.send({ status: true, message: req.body.mobile, token: token ,data:user});
     }
 
     return res.send({ status: false, message: "Invalid Mobile or Passoword" });
@@ -83,6 +83,7 @@ app.get("/api/user/",authenticateToken, async (req, res) => {
   } catch (err) {
     res.status(400).send(err);
   }
+
 });
 app.get("/api/admin/user/list", async (req, res) => {
   try {
